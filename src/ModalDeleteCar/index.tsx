@@ -27,7 +27,7 @@ export default function ModalDeleteCar({
   async function deleteItem() {
     const response = await api.delete(`cars/${itemCar._id}`);
     const deleted = completeList.findIndex((item) => item._id === itemCar._id);
-    changeList([...completeList.splice(deleted)]);
+    changeList(completeList.filter((item) => item._id !== itemCar._id));
     setModal(false);
   }
   return (
